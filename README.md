@@ -2,30 +2,46 @@
 
 ## Overview
 
-HAAM is an experimental R package implementing a distance measure for datasets containing mixed numerical and categorical variables.
+**HAAM** is an experimental R package exploring a distance measure for datasets containing mixed numerical and categorical variables.
 
-The project explores how to measure similarity between observations when data contains different variable types.
+The project investigates how similarity between observations can be measured when a dataset includes different types of variables within a unified framework.
 
 ## Motivation
 
-Many real-world datasets combine numerical measurements and categorical attributes. HAAM is an experiment in developing a distance measure designed to handle both types of data within one framework.
+Real-world datasets often combine numerical measurements with categorical attributes. Traditional distance measures may require adjustments to accommodate these different data types.
+
+HAAM explores an approach to measuring distances across mixed-type data, with the goal of supporting further experimentation in statistical analysis and data science.
 
 ## Technologies
 
-- **R** — package development and statistical computing
-- **Roxygen2** — documentation
+- **R** — statistical computing and package development
+- **Roxygen2** — function documentation
 - **GitHub** — version control and project hosting
 
 ## Repository Structure
 
 - `R/` — R source code
 - `man/` — package documentation
-- `DESCRIPTION` — package metadata
+- `DESCRIPTION` — package metadata and dependencies
 - `NAMESPACE` — exported functions and namespace configuration
+- `README.md` — project overview and documentation
 
-## Status
+## Current Status
 
-This is an experimental project under development. Review the source code and documentation for the current implementation and available functions.
+HAAM is an experimental project under development. Its implementation, functionality, and methodology may evolve as the project progresses.
+
+Please review the source code and package documentation for details about the current functions and their intended use.
+
+## Future Development
+
+Potential areas for further development include:
+
+- Testing the metric on datasets containing mixed variable types
+- Documenting assumptions, scaling, and variable-weighting choices
+- Comparing results with established distance measures
+- Adding automated tests and reproducible examples
+
+These are potential development directions, not claims about currently implemented features.
 
 ## Author
 
@@ -33,4 +49,4 @@ Abbas Ali
 
 ## License
 
-MIT License. See `LICENSE` for details.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
