@@ -5,8 +5,7 @@ The `haam_distance()` function calculates a weighted logarithmic distance betwee
 The current implementation uses the following formula:
 
 **Distance formula**
-
-`d(x, y) = sum(w_j * log(1 + abs(x_j - y_j)))` for each selected feature `j` in `N`.
+`d(x, y) = sum over j in N of [w_j * log(1 + abs(x_j - y_j))]`
 
 Where:
 
