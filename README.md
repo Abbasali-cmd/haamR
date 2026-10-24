@@ -1,52 +1,67 @@
-# Hybrid Abbas Ali Metric (HAAM)
+## Current Implementation
 
-## Overview
+The `haam_distance()` function calculates a weighted logarithmic distance between two observations using selected numerical features.
 
-**HAAM** is an experimental R package exploring a distance measure for datasets containing mixed numerical and categorical variables.
+The current implementation uses the following formula:
 
-The project investigates how similarity between observations can be measured when a dataset includes different types of variables within a unified framework.
+\[
+d(x,y)=\sum_{j\in N}w_j\log\left(1+\left|x_j-y_j\right|\right)
+\]
 
-## Motivation
+Where:
 
-Real-world datasets often combine numerical measurements with categorical attributes. Traditional distance measures may require adjustments to accommodate these different data types.
+- \(x_j\) and \(y_j\) are the numerical values of feature \(j\) for observations \(x\) and \(y\).
+- \(N\) is the set of selected numerical feature indices.
+- \(w_j\) is the non-negative weight assigned to feature \(j\).
+- \(\log\) is the natural logarithm.
 
-HAAM explores an approach to measuring distances across mixed-type data, with the goal of supporting further experimentation in statistical analysis and data science.
+The logarithmic transformation reduces the influence of larger absolute differences compared with an untransformed absolute-distance calculation.
 
-## Technologies
+**Note:** The current implementation calculates distances using numerical features only. Handling categorical variables within a unified distance measure remains a potential direction for future development.
 
-- **R** — statistical computing and package development
-- **Roxygen2** — function documentation
-- **GitHub** — version control and project hosting
+## Example
 
-## Repository Structure
+The following example calculates the HAAM distance between two observations using their first and second features, with weights of 1 and 0.5, respectively.
 
-- `R/` — R source code
-- `man/` — package documentation
-- `DESCRIPTION` — package metadata and dependencies
-- `NAMESPACE` — exported functions and namespace configuration
-- `README.md` — project overview and documentation
+```r
+# Define two observations
+x <- c(10, 20, 1)
+y <- c(12, 25, 0)
 
-## Current Status
+# Select numerical features and assign weights
+num_indices <- c(1, 2)
+feature_weights <- c(1, 0.5)
 
-HAAM is an experimental project under development. Its implementation, functionality, and methodology may evolve as the project progresses.
+# Calculate the HAAM distance
+haam_distance(
+  x = x,
+  y = y,
+  num_indices = num_indices,
+  feature_weights = feature_weights
+)
+```
 
-Please review the source code and package documentation for details about the current functions and their intended use.
+**Calculation**
 
-## Future Development
+For the selected features, the absolute differences are 2 and 5.
 
-Potential areas for further development include:
+\[
+d(x,y)=1\log(1+2)+0.5\log(1+5)
+\]
 
-- Testing the metric on datasets containing mixed variable types
-- Documenting assumptions, scaling, and variable-weighting choices
-- Comparing results with established distance measures
-- Adding automated tests and reproducible examples
+\[
+d(x,y)=\log(3)+0.5\log(6)\approx 1.9356
+\]
 
-These are potential development directions, not claims about currently implemented features.
+The resulting distance is approximately **1.9356**. A distance of zero occurs when all selected feature values are equal or all corresponding weights are zero.
 
-## Author
+## Input Validation
 
-Abbas Ali
+The function checks that:
 
-## License
+- `x` and `y` are numeric vectors of equal length.
+- `num_indices` contains valid, unique feature indices.
+- `feature_weights` contains one finite, non-negative weight per selected feature.
+- Selected feature values are finite.
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
+Invalid inputs produce an error message rather than a distance result.
