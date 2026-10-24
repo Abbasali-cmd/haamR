@@ -4,9 +4,9 @@ The `haam_distance()` function calculates a weighted logarithmic distance betwee
 
 The current implementation uses the following formula:
 
-\[
-d(x,y)=\sum_{j\in N}w_j\log\left(1+\left|x_j-y_j\right|\right)
-\]
+**Distance formula**
+
+`d(x, y) = sum(w_j * log(1 + abs(x_j - y_j)))` for each selected feature `j` in `N`.
 
 Where:
 
@@ -44,14 +44,13 @@ haam_distance(
 **Calculation**
 
 For the selected features, the absolute differences are 2 and 5.
+**Step 1: Apply the feature weights**
 
-\[
-d(x,y)=1\log(1+2)+0.5\log(1+5)
-\]
+`d(x, y) = 1 * log(1 + 2) + 0.5 * log(1 + 5)`
 
-\[
-d(x,y)=\log(3)+0.5\log(6)\approx 1.9356
-\]
+**Step 2: Calculate the result**
+
+`d(x, y) = log(3) + 0.5 * log(6) ≈ 1.9356`
 
 The resulting distance is approximately **1.9356**. A distance of zero occurs when all selected feature values are equal or all corresponding weights are zero.
 
