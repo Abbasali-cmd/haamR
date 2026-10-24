@@ -1,9 +1,13 @@
+
 Package: haamR
-Title: What the Package Does (One Line, Title Case)
+Title: Hybrid Abbas Ali Metric for Mixed-Type Data
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R:
+    person("Abbas", "Ali", role = c("aut", "cre"))
+Description: Provides an experimental distance metric for datasets
+    containing mixed numerical and categorical variables. Designed
+    for exploring similarity between observations with different
+    data types.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
